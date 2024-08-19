@@ -1,4 +1,4 @@
-import React, {FC} from 'react'
+import React, {FC, useState} from 'react'
 import {NavLink} from 'react-router-dom'
 import s from './Sidebar.module.css'
 import {PATH} from '../Pages'
@@ -10,6 +10,7 @@ type PropsType = {
 }
 
 export const Sidebar: FC<PropsType> = ({open, handleClose}) => {
+    const [isActive, setIsActive] = useState()
     const sidebarClass = s.sidebar
         + (open ? ' ' + s.open : '')
     return (
@@ -32,6 +33,7 @@ export const Sidebar: FC<PropsType> = ({open, handleClose}) => {
                         to={PATH.PRE_JUNIOR}
                         onClick={handleClose}
                         // className={...} // делает студент
+                        className={({isActive}) => (isActive ? s.active : '')}
                     >
                         Pre-junior
                     </NavLink>
@@ -40,6 +42,7 @@ export const Sidebar: FC<PropsType> = ({open, handleClose}) => {
                         to={PATH.JUNIOR}
                         onClick={handleClose}
                         // className={...} // делает студент
+                        className={({isActive}) => (isActive ? s.active : '')}
                     >
                         Junior
                     </NavLink>
@@ -48,6 +51,7 @@ export const Sidebar: FC<PropsType> = ({open, handleClose}) => {
                         to={PATH.JUNIOR_PLUS}
                         onClick={handleClose}
                         // className={...} // делает студент
+                        className={({isActive}) => (isActive ? s.active : '')}
                     >
                         Junior Plus
                     </NavLink>
